@@ -7,6 +7,8 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+env:
+  PR_NUMBER: ${{ github.event.pull_request.number }}
 jobs:
   send_notification:
     runs-on: ubuntu-latest
@@ -22,4 +24,5 @@ jobs:
           MSG=$(git log --format=%B -n 1 ${{github.event.after}})
           #echo "::set-env name=COMMIT_MESSAGE::${MSG}"
           echo "${MSG}"
-          echo "::set-output name=pull_request_number::$(gh pr view --json number -q .number || echo "")"
+          echo "PR number = ${{ github.event.pull_request.number }}"
+          echo "PR number = ${{ env.PR_NUMBER }}"
