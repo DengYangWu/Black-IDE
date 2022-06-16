@@ -8,7 +8,7 @@ on:
       - 'v*'
   workflow_dispatch:
 env:
-  GITHUB_PR_NUMBER: ${{github.event.issue.pull_request.number}}
+  GITHUB_PR_NUMBER: ${{github.event.number}}
 jobs:
   send_notification:
     runs-on: ubuntu-latest
