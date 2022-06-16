@@ -9,6 +9,7 @@ on:
   workflow_dispatch:
 env:
   PR_NUMBER: ${{ github.event.pull_request.number }}
+  PR_NUMBER1: ${{ github.event.number }}
 jobs:
   send_notification:
     runs-on: ubuntu-latest
@@ -26,3 +27,4 @@ jobs:
           echo "${MSG}"
           echo "PR number = ${{ github.event.pull_request.number }}"
           echo "PR number = ${{ env.PR_NUMBER }}"
+          echo ${env.PR_NUMBER1}
