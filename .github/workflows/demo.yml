@@ -24,4 +24,4 @@ jobs:
           MSG=$(git log --format=%B -n 1 ${{github.event.after}})
           #echo "::set-env name=COMMIT_MESSAGE::${MSG}"
           echo "${MSG}"
-          echo "$GITHUB_PR_NUMBER"
+          echo ${GITHUB_PR_NUMBER}
