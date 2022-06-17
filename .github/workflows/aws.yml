@@ -21,9 +21,9 @@ jobs:
     name: Flush
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: frontend-artifact
+#       - uses: actions/download-artifact@v2
+#         with:
+#           name: frontend-artifact
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
