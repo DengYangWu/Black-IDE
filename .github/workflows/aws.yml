@@ -13,31 +13,32 @@ env:
 #   CONTAINER_NAME: MY_CONTAINER_NAME           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
   distribution_id: E28UBPK9Z0N99E
-
+  
 permissions:
   contents: read
 
 jobs:
-  deploy:
-    name: Deploy
+  build-info:
+    name: Flush
     runs-on: ubuntu-latest
-    environment: production
-
     steps:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Configure AWS credentials
+    - name: Flush aws
       uses: chrislennon/action-aws-cli@v1.1
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 #     - run: aws cloudfront create-invalidation --distribution-id=${env.distribution_id} --paths "/*"
-#       working-directory: ./modules/fe-personal-site
+#       # working-directory: ./modules/fe-personal-site
 #       env:
 #         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
 #         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 #         PERSONAL_SITE_CF_ID: ${{ secrets.PERSONAL_SITE_CF_ID }}
+#         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+        #aws-region: ${{ env.AWS_REGION }}
         commands: 'aws cloudfront create-invalidation --distribution-id=${env.distribution_id} --paths /*'
         
