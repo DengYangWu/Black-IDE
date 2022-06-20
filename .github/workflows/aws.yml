@@ -3,7 +3,7 @@ name: Flush to Amazon ECS
 on:
   workflow_dispatch:
 env:
-  CLOUDFRONT_DISTRIBUTION_ID: E19AK26SFJYOK4
+  CLOUDFRONT_DISTRIBUTION_ID: E28UBPK9Z0N99E
   
 jobs:
   build-info:
@@ -14,7 +14,7 @@ jobs:
       - name: Development Branch Detected
         if: ${{ needs.build-info.outputs.branch != 'master'}}
         run: |
-            echo "CLOUDFRONT_DISTRIBUTION_ID=E28UBPK9Z0N99E" >> $GITHUB_ENV
+            echo "CLOUDFRONT_DISTRIBUTION_ID=E19AK26SFJYOK4" >> $GITHUB_ENV
             
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
